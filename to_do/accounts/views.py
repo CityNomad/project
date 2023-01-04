@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views.generic import CreateView, DetailView
 from accounts.forms import MyUserCreationForm
 from django.contrib.auth.models import User
@@ -67,4 +68,3 @@ class ProfileView(LoginRequiredMixin, DetailView):
         context['articles'] = page_object.object_list
         context['is_paginated'] = page_object.has_other_pages()
         return context
-# Create your views here.
