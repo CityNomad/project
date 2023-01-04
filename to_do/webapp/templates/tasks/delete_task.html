@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <form action="" method="post">
+        {% csrf_token %}
+            <h2 class="mb-4">Are you sure want to delete task {{ task.summary }}?</h2>
+            <div class="btn-group">
+                <button type="submit" class="btn btn btn-outline-danger">Yes</button>
+                <a href="{% url "webapp:home" %}" class="btn btn-outline-danger">No</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

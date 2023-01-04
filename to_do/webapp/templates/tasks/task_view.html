@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Detailed view{% endblock %}
+{% block nav_add %}
+    {% if request.user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url "webapp:update_task" task.pk %}">Update</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url "webapp:delete_task" task.pk %}">Delete</a>
+        </li>
+    {% endif %}
+{% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="card mt-4" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Task: {{ task.summary }}</h5>
+            <p class="card-text">Description: {{ task.description }}</p>
+            <p class="card-text">Status: {{ task.status }}</p>
+            <p class="card-text">Types: {% for type in task.types.all %}{{ type.title }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+            <p class="card-text">Created at: {{ task.created_at }}</p>
+            <p class="card-text">Updated at: {{ task.updated_at }}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

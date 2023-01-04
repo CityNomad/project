@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Detailed{% endblock %}
+{% block nav_add %}
+    {% if request.user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url "webapp:create_project" %}">New project</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url "webapp:update_project" project.pk %}">Update project</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url "webapp:delete_project" project.pk %}">Delete project</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url "webapp:create_task" project.pk %}">Add task</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url "webapp:add_user_project" project.pk %}">Add user</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url "webapp:delete_user_project" project.pk %}">Delete user</a>
+        </li>
+    {% endif %}
+{% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="card mt-4 w-50 p-3" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Project: {{ project.title }}</h5>
+            <p class="card-text">Users:
+                {% for user in project.users.all %}
+                    {{ user }}<a href="{% url  "webapp:delete_user_project" user.pk %}">Delete</a></p>
+                {% endfor %}
+
+            <p class="card-text">Description: {{ project.description }}</p>
+            <p class="card-text">Started at: {{ project.start_date }}</p>
+            <p class="card-text">Finished at: {{ project.finish_date }}</p>
+            <p class="card-text pb-2">Tasks:</p>
+            <ul class="list-group list-group-numbered">
+                {% for task in tasks %}
+                    <li class="list-group-item ">{{ task.summary }}
+                    <a href="{% url "webapp:task_view" task.pk %}" class="btn btn-outline-danger">More..</a>
+                    </li>
+                {% endfor %}
+                </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
