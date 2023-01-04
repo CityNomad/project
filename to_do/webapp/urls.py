@@ -1,7 +1,8 @@
 from django.urls import path
 from django.views.generic import TemplateView, RedirectView
 
-from webapp.views import HomeView, TaskView, CreateTask, UpdateTask, DeleteTask, IndexView, ProjectView, CreateProject, UpdateProject, DeleteProject, AddUserProject, DeleteUserProject
+from webapp.views import HomeView, TaskView, CreateTask, UpdateTask, DeleteTask, ProjectView, CreateProject, \
+    UpdateProject, DeleteProject, AddUserProject, DeleteUserProject
 
 app_name = "webapp"
 

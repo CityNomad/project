@@ -2,7 +2,7 @@
 {% load static %}
 {% block title %}Home{% endblock %}
 {% block nav_add %}
-    {% if request.user.is_authenticated %}
+    {% if perms.webapp.add_project %}
         <li class="nav-item">
             <a class="nav-link" href="{% url "webapp:create_project" %}">Add project</a>
         </li>

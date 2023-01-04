@@ -38,8 +38,8 @@ class Type(models.Model):
 
     class Meta:
         db_table = "types"
-        verbose_name = "Тип"
-        verbose_name_plural = "Типы"
+        verbose_name = "Type"
+        verbose_name_plural = "Types"
 
 
 class Status(models.Model):
@@ -72,5 +72,6 @@ class Project(models.Model):
         verbose_name = "Project"
         verbose_name_plural = "Projects"
         permissions = [
-            ('add_project_user', 'Add project user')
+            ('add_project_user', 'Add project user'),
+            ('delete_project_user', "Delete project user")
         ]
