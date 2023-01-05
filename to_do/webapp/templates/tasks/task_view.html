@@ -2,12 +2,12 @@
 {% load static %}
 {% block title %}Detailed view{% endblock %}
 {% block nav_add %}
-    {% if perms.webapp.change_task and user in project.users.all %}
+    {% if perms.webapp.change_task and user in task.project.users.all %}
         <li class="nav-item">
             <a class="nav-link" href="{% url "webapp:update_task" task.pk %}">Update</a>
         </li>
     {% endif %}
-    {% if perms.webapp.delete_task and user in project.users.all %}
+    {% if perms.webapp.delete_task and user in task.project.users.all %}
         <li class="nav-item">
             <a class="nav-link" href="{% url "webapp:delete_task" task.pk %}">Delete</a>
         </li>
