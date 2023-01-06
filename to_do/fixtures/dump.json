@@ -1,0 +1,248 @@
+[
+{
+  "model": "webapp.task",
+  "pk": 1,
+  "fields": {
+    "summary": "First task",
+    "description": "Interesting description",
+    "status": 1,
+    "created_at": "2023-01-04T17:28:16.023Z",
+    "updated_at": "2023-01-04T17:28:16.023Z",
+    "project": 2,
+    "types": []
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 2,
+  "fields": {
+    "summary": "A task",
+    "description": "info about task",
+    "status": 2,
+    "created_at": "2023-01-04T19:02:52.231Z",
+    "updated_at": "2023-01-04T19:02:52.231Z",
+    "project": 4,
+    "types": []
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 3,
+  "fields": {
+    "summary": "task2",
+    "description": "info2",
+    "status": 1,
+    "created_at": "2023-01-04T19:06:26.956Z",
+    "updated_at": "2023-01-04T19:06:26.956Z",
+    "project": 4,
+    "types": []
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 4,
+  "fields": {
+    "summary": "task4",
+    "description": null,
+    "status": 3,
+    "created_at": "2023-01-04T19:09:47.546Z",
+    "updated_at": "2023-01-05T17:47:56.770Z",
+    "project": 4,
+    "types": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 5,
+  "fields": {
+    "summary": "new task",
+    "description": "another interesting information",
+    "status": 2,
+    "created_at": "2023-01-04T19:22:51.359Z",
+    "updated_at": "2023-01-04T19:22:51.359Z",
+    "project": 3,
+    "types": []
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 6,
+  "fields": {
+    "summary": "task5",
+    "description": "gfhfhjdjjjsj",
+    "status": 1,
+    "created_at": "2023-01-05T16:26:41.597Z",
+    "updated_at": "2023-01-05T16:26:41.597Z",
+    "project": 3,
+    "types": []
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 7,
+  "fields": {
+    "summary": "task33",
+    "description": "ghgjfkfk",
+    "status": 3,
+    "created_at": "2023-01-05T16:57:50.431Z",
+    "updated_at": "2023-01-05T17:03:54.046Z",
+    "project": 6,
+    "types": [
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 8,
+  "fields": {
+    "summary": "task1",
+    "description": "fhgjkfl",
+    "status": 2,
+    "created_at": "2023-01-05T17:05:37.830Z",
+    "updated_at": "2023-01-05T17:05:37.830Z",
+    "project": 5,
+    "types": []
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 10,
+  "fields": {
+    "summary": "hege",
+    "description": "gahsks",
+    "status": 3,
+    "created_at": "2023-01-05T17:47:42.897Z",
+    "updated_at": "2023-01-05T17:47:42.897Z",
+    "project": 4,
+    "types": []
+  }
+},
+{
+  "model": "webapp.type",
+  "pk": 1,
+  "fields": {
+    "title": "Task"
+  }
+},
+{
+  "model": "webapp.type",
+  "pk": 2,
+  "fields": {
+    "title": "Bug"
+  }
+},
+{
+  "model": "webapp.type",
+  "pk": 3,
+  "fields": {
+    "title": "Enhancement"
+  }
+},
+{
+  "model": "webapp.status",
+  "pk": 1,
+  "fields": {
+    "title": "New"
+  }
+},
+{
+  "model": "webapp.status",
+  "pk": 2,
+  "fields": {
+    "title": "In Progress"
+  }
+},
+{
+  "model": "webapp.status",
+  "pk": 3,
+  "fields": {
+    "title": "Done"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 1,
+  "fields": {
+    "title": "New project 1",
+    "description": "Very interesting and successful project",
+    "start_date": "2023-01-04",
+    "finish_date": null,
+    "users": []
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 2,
+  "fields": {
+    "title": "Project 2",
+    "description": "Another interesting project to be finished with success",
+    "start_date": "2021-04-04",
+    "finish_date": null,
+    "users": [
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 3,
+  "fields": {
+    "title": "Dev project",
+    "description": "very important information",
+    "start_date": "2023-01-01",
+    "finish_date": null,
+    "users": [
+      4
+    ]
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 4,
+  "fields": {
+    "title": "Dev project 2",
+    "description": "hagahahaja",
+    "start_date": "2023-01-01",
+    "finish_date": null,
+    "users": [
+      2,
+      3,
+      4
+    ]
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 5,
+  "fields": {
+    "title": "Manager's pro",
+    "description": "blabla",
+    "start_date": "2023-02-01",
+    "finish_date": null,
+    "users": [
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 6,
+  "fields": {
+    "title": "Title",
+    "description": "ghjg uhf",
+    "start_date": "2023-05-01",
+    "finish_date": null,
+    "users": [
+      2,
+      3,
+      4
+    ]
+  }
+}
+]
