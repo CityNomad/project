@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+    <div class="card flex-row mt-3">
+        {% if user.profile.avatar %}
+            <img src="{{ user.profile.avatar.url }}" class="card-img-top w-25" alt="...">
+        {% endif %}
+        <div class="card-body ms-5">
+            <h5 class="card-title">Username: {{ user.username }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">First name: {{ user.first_name }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Last name: {{ user.last_name }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Git link: {{ user.profile.git_profile }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">About: {{ user.profile.about }}</h6>
+            {% if user.projects.all %}
+            <p class="card-text pb-2">User's projects:</p>
+            <ul class="list-group list-group-numbered">
+                {% for project in user.projects.all %}
+                    <li class="list-group-item ">{{ project.title }}
+                    <a href="{% url "webapp:project_view" project.pk %}" class="btn btn-outline-danger">More..</a>
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+    </div>
+
+{% endblock %}

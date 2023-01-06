@@ -117,6 +117,9 @@ LOGIN_URL = 'accounts:login'
 LOGIN_REDIRECT_URL = 'webapp:home'
 LOGOUT_REDIRECT_URL = 'webapp:home'
 
+MEDIA_ROOT = Path.joinpath(BASE_DIR, "uploads")
+MEDIA_URL = "/media/"
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/

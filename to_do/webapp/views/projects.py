@@ -18,7 +18,6 @@ class HomeView(ListView):
     ordering = "id"
     paginate_by = 2
 
-
     def get(self, request, *args, **kwargs):
         self.form = self.get_search_form()
         self.search_value = self.get_search_value()
@@ -77,8 +76,6 @@ class UpdateProject(PermissionRequiredMixin, UpdateView):
     form_class = ProjectForm
     context_object_name = 'project'
     permission_required = 'webapp.change_project'
-
-
 
 
 class DeleteProject(PermissionRequiredMixin, DeleteView):

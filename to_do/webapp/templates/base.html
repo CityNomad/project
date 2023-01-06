@@ -25,7 +25,7 @@
               <a class="nav-link" href="{% url "accounts:logout" %}">Logout</a>
           </li>
           <li class="nav-item">
-              <p>Hello, {{ user.username }}</p>
+              <p>Hello, <a href="{% url 'accounts:profile' request.user.pk %}">{{ user.username }}</a></p>
           </li>
       {% else %}
           <li class="nav-item">
