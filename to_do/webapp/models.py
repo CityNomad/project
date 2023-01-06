@@ -73,5 +73,6 @@ class Project(models.Model):
         verbose_name_plural = "Projects"
         permissions = [
             ('add_project_user', 'Add project user'),
-            ('delete_project_user', "Delete project user")
+            ('delete_project_user', "Delete project user"),
+            ('view_list_of_users', 'View list of users')
         ]

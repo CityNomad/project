@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}List of users{% endblock %}
+{% block nav_add %}
+    {% if perms.webapp.add_project %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url "webapp:create_project" %}">Add project</a>
+        </li>
+     {% endif %}
+    {% include "partial/search.html" %}
+{% endblock %}
+{% block content %}
+<div class="container">
+
+    <div><h1>List of users:</h1></div>
+    <div class="card-body ms-5">
+        {% for user in users %}
+
+            <h5 class="card-title">{{ forloop.counter }}. {{ user.username }} <a href="{% url "accounts:profile" user.pk %}" class="btn btn-outline-danger">More..</a></h5>
+        {% empty %}
+            <p>Sorry,no available users in the list to view</p>
+        {% endfor %}
+    </div>
+{% if is_paginated %}
+        {% include "partial/pagination.html" %}
+    {% endif %}
+</div>
+{% endblock %}

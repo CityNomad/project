@@ -7,6 +7,11 @@
             <a class="nav-link" href="{% url "webapp:create_project" %}">Add project</a>
         </li>
      {% endif %}
+    {% if perms.webapp.view_list_of_users %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url "accounts:users" %}">Users</a>
+        </li>
+     {% endif %}
     {% include "partial/search.html" %}
 {% endblock %}
 {% block content %}

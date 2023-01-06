@@ -10,7 +10,7 @@ class MyUserCreationForm(UserCreationForm):
         cleaned_data = super().clean()
         if cleaned_data['last_name'] == '':
             if cleaned_data['first_name'] == '':
-                raise forms.ValidationError("Заполните одно из полей - Имя или Фамилию")
+                raise forms.ValidationError("Fill in one of the lines - first name or last name")
             return cleaned_data
         return cleaned_data
 
