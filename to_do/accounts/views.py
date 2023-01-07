@@ -1,16 +1,17 @@
+from django.contrib.auth.views import PasswordChangeView
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login, logout, get_user_model
+from django.contrib.auth import authenticate, login, logout, get_user_model, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.utils.http import urlencode
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
-from accounts.forms import MyUserCreationForm, UserChangeForm, ProfileChangeForm
+from accounts.forms import MyUserCreationForm, UserChangeForm, ProfileChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django import forms
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
 
 from accounts.models import Profile
 from webapp.forms import SearchForm
@@ -140,3 +141,20 @@ class ChangeProfileView(PermissionRequiredMixin, UpdateView):
 
     def form_invalid(self, form, profile_form):
         return self.render_to_response(self.get_context_data(form=form, profile_form=profile_form))
+
+
+class UserPasswordChangeView(LoginRequiredMixin, UpdateView):
+    model = get_user_model()
+    template_name = 'change_password.html'
+    form_class = PasswordChangeForm
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def get_success_url(self):
+        return reverse('accounts:profile', kwargs={"pk": self.request.user.pk})
+
+    def form_valid(self, form):
+        result = super().form_valid(form)
+        update_session_auth_hash(self.request, self.object)
+        return result

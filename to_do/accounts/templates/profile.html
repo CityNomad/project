@@ -7,7 +7,7 @@
             <a class="nav-link" href="{% url 'accounts:change_profile' user_obj.pk %}">Update profile</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="">Change password</a>
+            <a class="nav-link" href="{% url "accounts:password_change" %}">Change password</a>
         </li>
     {% endif %}
 {% endblock %}
