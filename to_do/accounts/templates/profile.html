@@ -1,22 +1,31 @@
 {% extends "base.html" %}
 
 {% block title %}Profile{% endblock %}
-
+{% block nav_add %}
+    {% if user_obj == user %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:change_profile' user_obj.pk %}">Update profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="">Change password</a>
+        </li>
+    {% endif %}
+{% endblock %}
 {% block content %}
     <div class="card flex-row mt-3">
-        {% if user.profile.avatar %}
-            <img src="{{ user.profile.avatar.url }}" class="card-img-top w-25" alt="...">
+        {% if user_obj.profile.avatar %}
+            <img src="{{ user_obj.profile.avatar.url }}" class="card-img-top w-25" alt="...">
         {% endif %}
         <div class="card-body ms-5">
-            <h5 class="card-title">Username: {{ user.username }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">First name: {{ user.first_name }}</h6>
-            <h6 class="card-subtitle mb-2 text-muted">Last name: {{ user.last_name }}</h6>
-            <h6 class="card-subtitle mb-2 text-muted">Git link: {{ user.profile.git_profile }}</h6>
-            <h6 class="card-subtitle mb-2 text-muted">About: {{ user.profile.about }}</h6>
+            <h5 class="card-title">Username: {{ user_obj.username }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">First name: {{ user_obj.first_name }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Last name: {{ user_obj.last_name }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Git link: {{ user_obj.profile.git_profile }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">About: {{ user_obj.profile.about }}</h6>
             {% if user.projects.all %}
             <p class="card-text pb-2">User's projects:</p>
             <ul class="list-group list-group-numbered">
-                {% for project in user.projects.all %}
+                {% for project in user_obj.projects.all %}
                     <li class="list-group-item ">{{ project.title }}
                     <a href="{% url "webapp:project_view" project.pk %}" class="btn btn-outline-danger">More..</a>
                     </li>

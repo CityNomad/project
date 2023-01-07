@@ -1,6 +1,9 @@
 from django import forms
+from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.core.validators import validate_email
+
+from accounts.models import Profile
 
 
 class MyUserCreationForm(UserCreationForm):
@@ -14,15 +17,20 @@ class MyUserCreationForm(UserCreationForm):
             return cleaned_data
         return cleaned_data
 
-        # last_name = self.cleaned_data['last_name']
-        # print(last_name)
-        # first_name = self.cleaned_data['first_name']
-        # print(first_name)
-        # if last_name == '':
-        #     if first_name == '':
-        #         raise forms.ValidationError("Заполните одно из полей - Имя или Фамилию")
-        #     return self.cleaned_data
-        # return self.cleaned_data
-
     class Meta(UserCreationForm.Meta):
         fields = ['username', 'password1', 'password2', 'first_name', 'last_name', 'email']
+
+
+class UserChangeForm(forms.ModelForm):
+    email = forms.EmailField(required=True)
+
+    class Meta:
+        model = get_user_model()
+        fields = ['first_name', 'last_name', 'email']
+        labels = {'first_name': 'First name', 'last_name': 'Last name', 'email': 'Email'}
+
+
+class ProfileChangeForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['git_profile', 'avatar', 'about']
