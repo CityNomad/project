@@ -143,18 +143,25 @@ class ChangeProfileView(PermissionRequiredMixin, UpdateView):
         return self.render_to_response(self.get_context_data(form=form, profile_form=profile_form))
 
 
-class UserPasswordChangeView(LoginRequiredMixin, UpdateView):
-    model = get_user_model()
-    template_name = 'change_password.html'
-    form_class = PasswordChangeForm
+# class UserPasswordChangeView(LoginRequiredMixin, UpdateView):
+#     model = get_user_model()
+#     template_name = 'change_password.html'
+#     form_class = PasswordChangeForm
+#
+#     def get_object(self, queryset=None):
+#         return self.request.user
+#
+#     def get_success_url(self):
+#         return reverse('accounts:profile', kwargs={"pk": self.request.user.pk})
+#
+#     def form_valid(self, form):
+#         result = super().form_valid(form)
+#         update_session_auth_hash(self.request, self.object)
+#         return result
 
-    def get_object(self, queryset=None):
-        return self.request.user
+
+class UserPasswordChangeView(PasswordChangeView):
+    template_name = 'change_password.html'
 
     def get_success_url(self):
         return reverse('accounts:profile', kwargs={"pk": self.request.user.pk})
-
-    def form_valid(self, form):
-        result = super().form_valid(form)
-        update_session_auth_hash(self.request, self.object)
-        return result

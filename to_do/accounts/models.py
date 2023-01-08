@@ -6,7 +6,7 @@ from django.db import models
 
 class Profile(models.Model):
     avatar = models.ImageField(upload_to="avatars", null=True, blank=True, verbose_name="Avatar")
-    git_profile = models.CharField(max_length=200, null=True, blank=True, verbose_name="Git link")
+    git_profile = models.URLField(null=True, blank=True, verbose_name="Git link")
     about = models.CharField(max_length=1000, null=True, blank=True, verbose_name="About")
     user = models.OneToOneField(get_user_model(),
                                 on_delete=models.CASCADE,
